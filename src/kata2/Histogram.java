@@ -4,20 +4,20 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-public class Histogram {
-    private final int [] data;
-
-    public Histogram() {
-        this.data = new int[]{1, 1, 1, 100, 2, 4, 5, 6, 8, 8, 4, 5, 6, 2, -4};
-    }
+public class Histogram<T> {
+    private final T[] data;
     
-    public int[] getData() {
+    public Histogram(T[] data) {
+        this.data = data;
+    }
+
+    public T[] getData() {
         return data;
     }
     
-    Map getHistogram(){
-        Map<Integer,Integer> histogram = new HashMap<>();
-        for (int i : getData()) {
+    public Map<T,Integer> getHistogram(){
+        Map<T,Integer> histogram = new HashMap<>();
+        for (T i : getData()) {
             if(histogram.containsKey(i)){
                 histogram.put(i, histogram.get(i)+1);
             }else{
@@ -25,5 +25,5 @@ public class Histogram {
             }
         }
         return histogram;
-    }
+    } 
 } 
